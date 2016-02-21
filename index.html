@@ -2,24 +2,42 @@
 <html>
   <head>
     <title>Chromecast Webpage Viewer - Sender</title>
-    <link href="sender/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css">
+    <link rel="stylesheet" href="sender/style.css">
   </head>
   <body>
-    <h1>Chromecast Webpage Viewer - Sender</h1>
-    <p>Cast urls to a Chromecast</p>
+    <div class="container">
+      <h1>Chromecast Webpage Viewer</h1>
+      <p>Cast webpages to a Chromecast.</p>
+      <p><b>Requires Chrome with the <a href="https://chrome.google.com/webstore/detail/google-cast/boadgeojelhgndaghljhdicfkmllpafd?hl=en" target="_blank">Google Cast plugin</a></b></p>
+      <p>
+        Insert a URL in the box below and click 'Cast It', this will open the Chromecast plugin to open, choose a Chromecast from this list.
+        This should then display the webpage on the selected Chromecast.
+      </p>
+      <p><i>This is acheived using an iframe, some webpages (for example google.com & twitter.com) are set to disable being displayed in this manor.</i></p>
+    </div>
 
-    <div class="container js-container">
-      <div class="instructions">
-        <p>Ensure that everything is setup correctly</p>
-        <p>Searching for receivers...</p>
-      </div>
-      <div class="casting">
-        <p>Currently casting: <span class="js-currently-casting"></span></p>
-        <form id="toCast">
-          <label for="urlToCast">Url</label>
-          <input type="text" id="urlToCast">
-          <button type="submit">Cast It</button>
-        </form>
+    <div class="container">
+      <div class="wrapper js-wrapper">
+        <div class="instructions">
+          <p>
+            <b>Can't find any Chromecast devices to cast to</b>
+            <br>
+            Ensure that everything is setup correctly.
+            <br>
+            Searching for receivers...
+          </p>
+        </div>
+        <div class="casting">
+          <p>Currently casting: <span class="js-currently-casting">...</span></p>
+          <form id="toCast">
+            <label for="urlToCast">URL</label>
+            <input type="text" id="urlToCast">
+            <button type="submit">Cast It</button>
+          </form>
+        </div>
       </div>
     </div>
 

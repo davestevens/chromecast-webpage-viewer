@@ -4,7 +4,7 @@ var namespace = "urn:x-cast:uk.co.ecksdee",
     castReceiverManager = null,
     messageBus = null;
 
-var $container = $(".js-container"),
+var $wrapper = $(".js-wrapper"),
     $iframe = $(".js-iframe");
 
 window.onload = function() {
@@ -49,7 +49,7 @@ window.onload = function() {
 function displayUrl(url, senderId) {
   currentUrl = addHttp(url);
   $iframe.attr("src", currentUrl);
-  $container.addClass("casting");
+  $wrapper.addClass("casting");
   castReceiverManager.setApplicationState("Displaying: " + currentUrl);
   // inform all senders on the CastMessageBus of the incoming message event
   // sender message listener will be invoked

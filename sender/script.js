@@ -2,7 +2,7 @@ var applicationId = "E978DA5B",
     namespace = "urn:x-cast:uk.co.ecksdee",
     session = null;
 
-var $container = $(".js-container"),
+var $wrapper = $(".js-wrapper"),
     $currentlyCasting = $(".js-currently-casting"),
     $urlToCast = $("#urlToCast"),
     $form = $("#toCast");
@@ -87,7 +87,7 @@ function receiverMessage(namespace, message) {
  * receiver listener during initialization
  */
 function receiverListener(e) {
-  $container[(e == "available" ? "add" : "remove") + "Class"]("receiver-found");
+  $wrapper[(e == "available" ? "add" : "remove") + "Class"]("receiver-found");
 }
 
 /**
