@@ -1,5 +1,5 @@
 var namespace = "urn:x-cast:uk.co.ecksdee",
-    loggerLevel = cast.receiver.LoggerLevel.DEBUG,
+    loggerLevel = cast.receiver.LoggerLevel.ERROR,
     currentUrl = null,
     castReceiverManager = null,
     messageBus = null;
