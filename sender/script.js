@@ -1,4 +1,4 @@
-var applicationId = "E978DA5B",
+var applicationId = "209991B4",
     namespace = "urn:x-cast:uk.co.ecksdee",
     session = null;
 
