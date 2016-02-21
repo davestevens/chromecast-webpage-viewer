@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chromecast Webpage Viewer - Sender</title>
+    <link href="/sender/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Chromecast Webpage Viewer - Sender</h1>
+    <p>Cast urls to a Chromecast</p>
+
+    <div class="container js-container">
+      <div class="instructions">
+        <p>Ensure that everything is setup correctly</p>
+        <p>Searching for receivers...</p>
+      </div>
+      <div class="casting">
+        <p>Currently casting: <span class="js-currently-casting"></span></p>
+        <form id="toCast">
+          <label for="urlToCast">Url</label>
+          <input type="text" id="urlToCast">
+          <button type="submit">Cast It</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="/sender/script.js"></script>
+  </body>
+</html>

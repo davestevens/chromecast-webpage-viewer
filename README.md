@@ -2,6 +2,10 @@
 
 Display a full screen webpage on Chromecast
 
+## Notes
+
+Based off [CastHelloText-chrome](https://github.com/googlecast/CastHelloText-chrome).
+
 ## TODO
 
 - [ ] Sender

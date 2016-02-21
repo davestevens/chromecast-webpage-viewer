@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "defaults"
+  ],
+  "globals": {
+    "chrome": true,
+    "cast": true,
+    "$": true
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-console": 0
+  }
+}
