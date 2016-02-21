@@ -37,23 +37,23 @@ window.onload = function() {
   messageBus.onMessage = function(event) {
     console.log("Message", event.senderId, event.data);
     // display the message from the sender
-    displayUrl(event.data, event.senderId);
+    displayUrl(event.data);
   }
 
   // initialize the CastReceiverManager with an application status message
-  window.castReceiverManager.start({ statusText: "Application is starting" });
+  castReceiverManager.start({ statusText: "Application is starting" });
   console.log("Receiver Manager started");
 };
 
 // utility function to display the text message in the input field
-function displayUrl(url, senderId) {
+function displayUrl(url) {
   currentUrl = addHttp(url);
   $iframe.attr("src", currentUrl);
   $wrapper.addClass("casting");
   castReceiverManager.setApplicationState("Displaying: " + currentUrl);
   // inform all senders on the CastMessageBus of the incoming message event
   // sender message listener will be invoked
-  messageBus.send(senderId, currentUrl);
+  messageBus.broadcast(currentUrl);
 }
 
 function addHttp(url) {

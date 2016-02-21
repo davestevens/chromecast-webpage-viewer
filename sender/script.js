@@ -81,7 +81,7 @@ function sessionUpdateListener(isAlive) {
 function receiverMessage(namespace, message) {
   $currentlyCasting.text(message);
   console.log("receiverMessage: "+namespace+", "+message);
-};
+}
 
 /**
  * receiver listener during initialization
