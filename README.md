@@ -17,15 +17,15 @@ To use your own receiver you need to signup to and register an app with [Google 
 ## TODO
 
 - [ ] Sender
-  - [ ] Display current url of Chromecast
-  - [ ] Update current webpage
+  - [x] Display current url of Chromecast
+  - [x] Update current webpage
   - [ ] Clear webpage
 - [ ] Receiver
-  - [ ] Display initial page (include url of sender)
-  - [ ] Listen for urls to display
-  - [ ] Send current url to Receivers upon connection
-  - [ ] Build URL (check for protocol)
+  - [x] Display initial page (include url of sender)
+  - [x] Listen for urls to display
+  - [x] Send current url to Receivers upon connection
+  - [x] Build URL (check for protocol)
 - [ ] Catch errors
-  - [ ] Some pages aren't able to be display in iframes
+  - [x] Some pages aren't able to be display in iframes
   - [ ] Urls which are broken
 - [ ] Docs for running locally
