@@ -1,6 +1,8 @@
 var namespace = "urn:x-cast:uk.co.ecksdee",
     loggerLevel = cast.receiver.LoggerLevel.ERROR,
     currentUrl = null,
+    useProxy = false,
+    proxyUrl = "http://ecksdee.co.uk/proxy.php",
     castReceiverManager = null,
     messageBus = null;
 
@@ -22,7 +24,7 @@ window.onload = function() {
   castReceiverManager.onSenderConnected = function(event) {
     console.log('Received Sender Connected event: ' + event.data);
     console.log(castReceiverManager.getSender(event.data).userAgent);
-    messageBus.send(event.senderId, currentUrl || "Nothing");
+    messageBus.send(event.senderId, messagePacket());
   };
 
   // handler for 'senderdisconnected' event
@@ -35,9 +37,14 @@ window.onload = function() {
 
   // handler for the CastMessageBus message event
   messageBus.onMessage = function(event) {
-    console.log("Message", event.senderId, event.data);
+    var data = JSON.parse(event.data);
+    console.log("Message", event.senderId, data);
+
+    currentUrl = addHttp(data.url);
+    useProxy = data.proxy;
+
     // display the message from the sender
-    displayUrl(event.data);
+    displayWebpage();
   }
 
   // initialize the CastReceiverManager with an application status message
@@ -46,14 +53,29 @@ window.onload = function() {
 };
 
 // utility function to display the text message in the input field
-function displayUrl(url) {
-  currentUrl = addHttp(url);
-  $iframe.attr("src", currentUrl);
+function displayWebpage() {
+  $iframe.attr("src", iframeUrl());
   $wrapper.addClass("casting");
   castReceiverManager.setApplicationState("Displaying: " + currentUrl);
   // inform all senders on the CastMessageBus of the incoming message event
   // sender message listener will be invoked
-  messageBus.broadcast(currentUrl);
+  messageBus.broadcast(messagePacket());
+}
+
+function messagePacket() {
+  return JSON.stringify({
+    url: currentUrl || "Nothing",
+    proxy: useProxy
+  });
+}
+
+function iframeUrl() {
+  if (useProxy) {
+    return proxyUrl + "?url=" + currentUrl;
+  }
+  else {
+    return currentUrl;
+  }
 }
 
 function addHttp(url) {

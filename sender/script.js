@@ -5,6 +5,7 @@ var applicationId = "209991B4",
 var $wrapper = $(".js-wrapper"),
     $currentlyCasting = $(".js-currently-casting"),
     $urlToCast = $("#urlToCast"),
+    $useProxy = $("#useProxy"),
     $form = $("#toCast");
 
 /**
@@ -22,7 +23,10 @@ function initialize() {
   initializeCastApi();
   $form.on("submit", function(event) {
     event.preventDefault();
-    sendMessage($.trim($urlToCast.val()));
+    sendMessage({
+      url: $.trim($urlToCast.val()),
+      proxy: $useProxy.is(":checked")
+    });
   });
 }
 
@@ -79,8 +83,9 @@ function sessionUpdateListener(isAlive) {
  * @param {string} message A message string
  */
 function receiverMessage(namespace, message) {
-  $currentlyCasting.text(message);
-  console.log("receiverMessage: "+namespace+", "+message);
+  var data = JSON.parse(message);
+  $currentlyCasting.text(data.url);
+  console.log("receiverMessage: "+namespace, data);
 }
 
 /**
